@@ -11,7 +11,7 @@
 extern "C" {
 #endif
 
-DLL_EXPORT const char* helloWorld(const char* input);
+DLL_EXPORT char* helloWorld(const char* input);
 
 #ifdef __cplusplus
 }

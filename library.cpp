@@ -1,9 +1,14 @@
-#include "library.h"
 #include <string>
+#include <cstring>
+#include <cstdlib>
+#include "library.h"
 
-static std::string output;
 
-extern "C" DLL_EXPORT const char* helloWorld(const char* input) {
-    output = "Hello World " + std::string(input);
-    return output.c_str();
+extern "C" DLL_EXPORT char* helloWorld(const char* input) {
+    std::string output = "Hello World " + std::string(input);
+    char* result = (char*)malloc(output.size() + 1); // +1 for null terminator
+    if (result) {
+        std::strcpy(result, output.c_str());
+    }
+    return result;
 }
